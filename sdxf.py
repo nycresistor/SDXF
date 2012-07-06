@@ -1,10 +1,9 @@
-#(c)www.stani.be (read __doc__ for more information)                            
+#(c)www.stani.be                      
 
-__version__ = """v1.2 (11/16/08)"""
+__version__ = """v1.1.2 (07/06/12)"""
 __author__  = "www.stani.be"
 __license__ = "GPL"
-__url__     = "http://www.stani.be/python/sdxf"
-__doc__     = \
+__url__     = "https://github.com/nycresistor/SDXF"
 """SDXF - Stani's DXF
 Python library to generate dxf drawings
 
@@ -14,8 +13,7 @@ License %s
 Homepage %s
 
 Library by Stani, whose website is now defunct.
-Modifications by Kelly Farrell (http://www.kellbot.com)
-to support LWPOLYLINE.
+Now on github, loosely maintained by Kellbot (http://www.kellbot.com)
 """ % \
 (__author__,__version__,__license__,__url__)
 
@@ -267,6 +265,10 @@ class Point(_Entity):
     def __init__(self,points=None,**common):
         _Entity.__init__(self,**common)
         self.points=points
+    def __str__(self):
+        result = '0\nPOINT\n%s' % (self._common())
+        result+= '\n%s' % _point(self.points)
+        return result
 
 class Solid(_Entity):
     """Colored solid fill."""
